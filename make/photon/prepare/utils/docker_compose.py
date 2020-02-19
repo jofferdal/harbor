@@ -30,6 +30,7 @@ def prepare_docker_compose(configs, with_clair, with_notary, with_chartmuseum):
         'protocol': configs['protocol'],
         'http_port': configs['http_port'],
         'registry_custom_ca_bundle_path': configs['registry_custom_ca_bundle_path'],
+        'core_custom_ca_bundle_path': configs['core_custom_ca_bundle_path'],
         'external_redis': configs['external_redis'],
         'external_database': configs['external_database'],
         'with_notary': with_notary,
@@ -52,11 +53,6 @@ def prepare_docker_compose(configs, with_clair, with_notary, with_chartmuseum):
     uaa_config = configs.get('uaa') or {}
     if uaa_config.get('ca_file'):
         rendering_variables['uaa_ca_file'] = uaa_config['ca_file']
-
-    # for core ca
-    core_ca_bundle = configs.get('core') or {}
-    if core_ca_bundle = configs.get('core_ca_file'):
-        rendering_variables['core_custom_ca_bundle_path'] = configs['core_custom_ca_bundle_path']
 
     # for log
     log_ep_host = configs.get('log_ep_host')

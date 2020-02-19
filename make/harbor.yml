@@ -5,8 +5,8 @@
 hostname: reg.mydomain.com
 
 # Uncomment the following section if you want to override the default system CA bundle
-# core:
-#  ca_bundle: /etc/pki/tls/certs/ca-bundle.crt
+core:
+  ca_bundle: /etc/pki/tls/certs/ca-bundle.crt
 
 # http related config
 http:
