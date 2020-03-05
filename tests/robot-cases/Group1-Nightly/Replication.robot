@@ -37,7 +37,7 @@ Test Case - Get Harbor Version
 
 Test Case - Pro Replication Rules Add
     Init Chrome Driver
-    Sign In Harbor    ${HARBOR_URL}    ${HARBOR_ADMIN}    ${HARBOR_PASSWORD}
+    Sign In Harbor    ${HARBOR_URL}    ${HARBOR_ADMIN}    ${HARBOR_PASSWORD}  is_close_scan_plugin_mesg=${true}
     Switch To Replication Manage
     Check New Rule UI Without Endpoint
     Close Browser
@@ -165,7 +165,7 @@ Test Case - Replication Of Push Images from Self To Harbor
     Init Chrome Driver
     ${d}=    Get Current Date    result_format=%m%s
     #login source
-    Sign In Harbor    ${HARBOR_URL}    ${HARBOR_ADMIN}    ${HARBOR_PASSWORD}
+    Sign In Harbor    ${HARBOR_URL}    ${HARBOR_ADMIN}    ${HARBOR_PASSWORD}  is_close_scan_plugin_mesg=${true}
     Create An New Project    project${d}
     Push Image    ${ip}    ${HARBOR_ADMIN}    ${HARBOR_PASSWORD}    project${d}    hello-world
     Push Image    ${ip}    ${HARBOR_ADMIN}    ${HARBOR_PASSWORD}    project${d}    busybox:latest
@@ -176,11 +176,11 @@ Test Case - Replication Of Push Images from Self To Harbor
     Create A Rule With Existing Endpoint    rule${d}    push    project${d}/*    image    e${d}    project_dest${d}
     #logout and login target
     Logout Harbor
-    Sign In Harbor    https://${ip1}    ${HARBOR_ADMIN}    ${HARBOR_PASSWORD}
+    Sign In Harbor    https://${ip1}    ${HARBOR_ADMIN}    ${HARBOR_PASSWORD}  is_close_scan_plugin_mesg=${true}
     Create An New Project    project_dest${d}
     #logout and login source
     Logout Harbor
-    Sign In Harbor    ${HARBOR_URL}    ${HARBOR_ADMIN}    ${HARBOR_PASSWORD}
+    Sign In Harbor    ${HARBOR_URL}    ${HARBOR_ADMIN}    ${HARBOR_PASSWORD}  is_close_scan_plugin_mesg=${true}
     Switch To Replication Manage
     Select Rule And Replicate  rule${d}
     Sleep  20
@@ -194,7 +194,7 @@ Test Case - Replication Of Push Chart from Self To Harbor
     Init Chrome Driver
     ${d}=    Get Current Date    result_format=%m%s
     #login source
-    Sign In Harbor    ${HARBOR_URL}    ${HARBOR_ADMIN}    ${HARBOR_PASSWORD}
+    Sign In Harbor    ${HARBOR_URL}    ${HARBOR_ADMIN}    ${HARBOR_PASSWORD}  is_close_scan_plugin_mesg=${true}
     Create An New Project    project${d}
     Go Into Project  project${d}  has_image=${false}
     Switch To Project Charts
@@ -205,16 +205,16 @@ Test Case - Replication Of Push Chart from Self To Harbor
     Create A Rule With Existing Endpoint    rule${d}    push    project${d}/*    chart    e${d}    project_dest${d}
     #logout and login target
     Logout Harbor
-    Sign In Harbor    https://${ip1}    ${HARBOR_ADMIN}    ${HARBOR_PASSWORD}
+    Sign In Harbor    https://${ip1}    ${HARBOR_ADMIN}    ${HARBOR_PASSWORD}  is_close_scan_plugin_mesg=${true}
     Create An New Project    project_dest${d}
     #logout and login source
     Logout Harbor
-    Sign In Harbor    ${HARBOR_URL}    ${HARBOR_ADMIN}    ${HARBOR_PASSWORD}
+    Sign In Harbor    ${HARBOR_URL}    ${HARBOR_ADMIN}    ${HARBOR_PASSWORD}  is_close_scan_plugin_mesg=${true}
     Switch To Replication Manage
     Select Rule And Replicate    rule${d}
     Sleep    20
     Logout Harbor
-    Sign In Harbor    https://${ip1}    ${HARBOR_ADMIN}    ${HARBOR_PASSWORD}
+    Sign In Harbor    https://${ip1}    ${HARBOR_ADMIN}    ${HARBOR_PASSWORD}  is_close_scan_plugin_mesg=${true}
     Go Into Project    project_dest${d}    has_image=${false}
     Switch To Project Charts
     Go Into Chart Version    ${harbor_chart_name}
@@ -226,7 +226,7 @@ Test Case - Replication Of Push Images from Self To Harbor By Push Event
     Init Chrome Driver
     ${d}=    Get Current Date    result_format=%m%s
     #login source
-    Sign In Harbor    ${HARBOR_URL}    ${HARBOR_ADMIN}    ${HARBOR_PASSWORD}
+    Sign In Harbor    ${HARBOR_URL}    ${HARBOR_ADMIN}    ${HARBOR_PASSWORD}  is_close_scan_plugin_mesg=${true}
     Create An New Project    project${d}
     Switch To Registries
     Create A New Endpoint    harbor    e${d}    https://${ip1}    ${HARBOR_ADMIN}    ${HARBOR_PASSWORD}
@@ -235,7 +235,7 @@ Test Case - Replication Of Push Images from Self To Harbor By Push Event
     ...    Event Based
     #logout and login target
     Logout Harbor
-    Sign In Harbor    https://${ip1}    ${HARBOR_ADMIN}    ${HARBOR_PASSWORD}
+    Sign In Harbor    https://${ip1}    ${HARBOR_ADMIN}    ${HARBOR_PASSWORD}  is_close_scan_plugin_mesg=${true}
     Create An New Project    project_dest${d}
     Push Image    ${ip}    ${HARBOR_ADMIN}    ${HARBOR_PASSWORD}    project${d}    centos
     Image Should Be Replicated To Project  project_dest${d}  centos

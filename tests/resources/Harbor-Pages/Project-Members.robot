@@ -38,7 +38,7 @@ Add User To Project Admin
     [Arguments]  ${project}  ${user}
     # *** this keyword has not been used ***
     Go Into Project
-    Retry Element Click  xpath=${project_member_tag_xpath}
+    Retry Element Click  xpath=${project_member_xpath}
     Retry Element Click  xpath=${project_member_add_button_xpath}
     Retry Text Input  xpath=${project_member_add_username_xpath}  ${user}
     Retry Element Click  xpath=${project_member_add_admin_xpath}
@@ -57,7 +57,7 @@ Search Project Member
 Change Project Member Role
     [Arguments]  ${project}  ${user}  ${role}
     Retry Element Click  xpath=//clr-dg-cell//a[contains(.,'${project}')]
-    Retry Element Click  xpath=${project_member_tag_xpath}
+    Retry Element Click  xpath=${project_member_xpath}
     Retry Element Click  xpath=//project-detail//clr-dg-row[contains(.,'${user}')]//clr-checkbox-wrapper
     #change role
     Retry Element Click  ${project_member_action_xpath}

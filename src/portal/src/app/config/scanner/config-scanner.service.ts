@@ -8,6 +8,8 @@ import { CURRENT_BASE_HREF } from "../../../lib/utils/utils";
 
 export const SCANNERS_DOC: string = "https://github.com/goharbor/harbor/blob/master/docs/harbor_compatibility_list.md";
 
+export const SCANNERS_DOC: string = "https://github.com/goharbor/harbor/blob/master/docs/harbor_compatibility_list.md";
+
 @Injectable()
 export class ConfigScannerService {
 

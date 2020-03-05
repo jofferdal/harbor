@@ -20,7 +20,7 @@ Resource  ../../resources/Util.robot
 
 *** Keywords ***
 Sign In Harbor
-    [Arguments]  ${url}  ${user}  ${pw}
+    [Arguments]  ${url}  ${user}  ${pw}  ${is_close_scan_plugin_mesg}=${false}
     Go To    ${url}
     Retry Wait Element  ${harbor_span_title}
     Retry Wait Element  ${login_name}
@@ -31,6 +31,7 @@ Sign In Harbor
     Retry Button Click  ${login_btn}
     Log To Console  ${user}
     Retry Wait Element  xpath=//span[contains(., '${user}')]
+    Run Keyword If  ${is_close_scan_plugin_mesg}==${true}  Run Keyword And Ignore Error  Retry Element Click  ${close_scan_plugin_mesg}
 
 Capture Screenshot And Source
     Capture Page Screenshot
